@@ -1,0 +1,38 @@
+name: Update Submodules
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Runs every 30 minutes
+  workflow_dispatch: # Allows manual run
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository (with submodules)
+      uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Configure git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Update submodules to latest commit
+      run: |
+        git submodule update --remote --recursive
+
+    - name: Commit and push changes if submodules were updated
+      run: |
+        if ! git diff --quiet; then
+          git add .
+          git commit -m "chore: update submodules to latest commit [auto]"
+          git push
+        else
+          echo "No submodule changes to commit."
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
