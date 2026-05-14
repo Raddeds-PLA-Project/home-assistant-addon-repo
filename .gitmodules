@@ -1,0 +1,3 @@
+[submodule "home-assistant-data-dumper"]
+	path = home-assistant-data-dumper
+	url = https://github.com/Raddeds-PLA-Project/home-assistant-data-dumper
