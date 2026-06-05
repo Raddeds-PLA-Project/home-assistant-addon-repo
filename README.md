@@ -1,5 +1,6 @@
 # Home Assistant Addon Repository for Radded's Personal Life Automation Project
 The PLA Project's addon repository. Add this to your Home Assistant!
+TODO: Update repo to run workflow only when submodules have been updated
 
 ## Addons
 ### [Radded's Home Assistant Data Dumper](https://github.com/Raddeds-PLA-Project/home-assistant-data-dumper)
