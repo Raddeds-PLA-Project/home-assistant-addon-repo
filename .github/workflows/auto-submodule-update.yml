@@ -22,7 +22,7 @@ jobs:
 
     - name: Update submodules to latest commit
       run: |
-        git submodule update --remote --recursive
+        git submodule update --init --remote
 
     - name: Commit and push changes if submodules were updated
       run: |
